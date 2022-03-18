@@ -157,9 +157,10 @@ class ImportProcessingService
      */
     protected function processElement(string $configName, array $importDataRow, Resolver $resolver, array $mapping)
     {
-        $element = null;
-        $importDataRowString = implode(', ', $importDataRow);
         try {
+            $element = null;
+            $importDataRowString = @implode(', ', $importDataRow);
+            
             //resolve data object
             $createNew = true;
             if ($resolver->getCreateLocationStrategy() instanceof DoNotCreateStrategy) {
